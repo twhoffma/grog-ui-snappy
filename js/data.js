@@ -1,10 +1,12 @@
 function init_data(){
 	function requestJSON(url){
+		/*
 		return new Promise(function(resolve, reject){
 			jQuery.ajax({
 				url: url 
 			}).then(
 				function(data){
+				
 					var r = jQuery.parseJSON(data);
 			
 					resolve(r);
@@ -14,6 +16,8 @@ function init_data(){
 				}
 			);
 		})
+		*/
+		return fetch(url).then(r => r.json())
 	}
 	
 	var fn = {
@@ -24,7 +28,8 @@ function init_data(){
 		},
 		
 		'getGeeklistFilters': function getGeeklistFilters(geeklistid){
-			var url = "./data/getGeeklistFilters?geeklistid=" + parseInt(geeklistid);
+			//var url = "./data/getGeeklistFilters?geeklistid=" + parseInt(geeklistid);
+			var url = "./staticdata/filters-" + parseInt(geeklistid) + '.json';
 			
 			return requestJSON(url) 
 		},
