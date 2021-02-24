@@ -29,6 +29,10 @@ public
 # Users Environment Variables
 .lock-wscript
 
+js/templates.js
+
+package-lock.json
+
 #vim
 *.swp
 
