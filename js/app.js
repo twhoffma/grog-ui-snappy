@@ -7,7 +7,7 @@
 		var filter;
 		var graphs;
 			
-		$(document).ready(function(){
+		document.addEventListener("DomContentLoaded", function(){
 			ui = init_ui();
 			data = init_data();
 			sidenav_geeklists = init_sidebar_geeklists();
@@ -42,7 +42,7 @@
 				ui.renderMenuGeeklists(r, filters);
 				
 				if(h.id !== undefined){
-					$('#geeklists').hide();
+					document.getElementById('geeklists').style.display = "none";
 				}
 			}).catch(function(e){
 				ui.setErrorMessage(e);
@@ -52,10 +52,12 @@
 			ui.renderUntoggleLinks(h);
 				
 			//If id of a specific geeklist is in args, load that one.	
-			if(h.id != undefined){
-				$(".listHeaderButtons").show();
-				$("#loadmore").show();
-				
+			if(h.id !== undefined){
+				//$(".listHeaderButtons").show();
+				Array.from(document.getElementsByclassName("listHeaderButtons")).forEach(e => e.style.display = "block");
+				//$("#loadmore").show();
+				document.getElementById("loadmore").style.display = "block";
+
 				selectedGeeklist = h.id;
 				
 				if(h.sorting != undefined){
@@ -69,28 +71,37 @@
 				}
 				
 				loadGeeklist(h.id, true, false, true);
-			}else{
-				//$('#sidenavGeeklists').toggle();	
-			}	
+			}
 			
+			Array.from(document.getElementsByTagName("select")).forEach(function(e){
+				e.addEventListener("click", guesstimate_obs);
+				e.addEventListener("ontouchstart", guesstimate_obs);
+
+			});
+			/*
 			$('select').on("change", function(){
 				guesstimate_obs();	
 				//FIXME: At some point add estimators for range sliders
 			});
+			*/
+
+			//$('#loadmore').on("click", function(){
+			let e = document.getElementById('loadmore');
+			e.addEventListener("click", () => loadGeeklist(selectedGeeklist, false, false, false));
+			e.addEventListener("ontouchstart", () => loadGeeklist(selectedGeeklist, false, false, false));
 			
-			$('#loadmore').on("click", function(){
-				loadGeeklist(selectedGeeklist, false, false, false);
-			});
-				
+			/*
 			$('.dropdown-menu').on("click", ".geeklist-menu-item", function(){
 				loadGeeklist(this.dataset.geeklistid, true, true, true);
 			});
-			
+			*/
+			/*
 			$('#sidenavLists').on("click", ".geeklist-menu-item", function(){
 				loadGeeklist(this.dataset.geeklistid, true, true, true);
 				$('#sidenavGeeklists').toggle();	
 			});
-			
+			*/
+
 			$('button#sort,button#filter,button#apply').on("click", function(){
 				loadGeeklist(selectedGeeklist, true, false, false);
 			});
@@ -229,7 +240,8 @@
 					//Load geeklist contents
 					ui.setLoadButtonState("loading");
 					//var numLoaded = $('.gameline').length;
-					var numLoaded = $('.bg').length;
+					var numLoaded = Array.from(document.getElementsByClassName('bg')).length;
+					
 					data.getGeeklist(selectedGeeklist, numLoaded, filter, sorting).then(function(r){
 						ui.renderGeeklist(r, '', selectedGeeklist, clearList);
 						
