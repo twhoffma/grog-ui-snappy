@@ -54,8 +54,8 @@ function init_ui(){
 	});
 
 	Handlebars.registerPartial('render_attr', Handlebars.templates.bgattr);
-	Handlebars.registerPartial('sidenav_rangeslider', Handlebars.templates.sidenav_rangeslider);
-	Handlebars.registerPartial('sidenav_dropdown', Handlebars.templates.sidenav_dropdown);
+	Handlebars.registerPartial('render_rangeslider', Handlebars.templates.sidenav_partial_rangeslider);
+	Handlebars.registerPartial('render_filteredselect', Handlebars.templates.sidenav_partial_dropdown);
 	
 	function toggleDetails(e, op){
 	      var p = $(e.target).parent().parent().parent().parent(); //It's pretty far up there
@@ -331,11 +331,15 @@ function init_ui(){
 			
 			return params
 		},
-		
+		'renderFiltersDialog': function renderFilersDialog(){
+			let html = Handlebar.templates.sidenav_filters();
+			let e = document.getElementById('modSortingAndFilters');
+			e.innerHTML = html;
+		},
 		'populateFilters': function populateFilters(r){
 			filternames.forEach(function(e){
 				var defaults;
-				
+
 				if(r[e.name] !== undefined){
 					var v = r[e.name];	
 					var el = $('#' + e.name);

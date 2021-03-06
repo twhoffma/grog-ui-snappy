@@ -15,6 +15,7 @@
 			graphs = init_graphs();
 				
 			ui.clearErrorMessage();
+			ui.renderFiltersDialog();
 							
 			var h = ui.getHistory();
 			

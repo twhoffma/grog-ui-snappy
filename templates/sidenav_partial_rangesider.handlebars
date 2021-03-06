@@ -1,0 +1,10 @@
+<div class="form-group">
+	<label for="{{bgattr}}">{{bgattrnm}}</label>
+	<svg id="{{bgattr}}hist" style="width: 100%;height: 50px;"></svg>
+	
+	<div id="{{bgattr}}" class="filterslider"></div>							
+		<input class="min" type="number" for="number" {{if step step="{{step}}"}}></input>
+		<input class="max" type="number" for="number" {{if step step="{{step}}"}}></input>
+	</div>
+	<span class="sidenav-reset-button"><i class="fa fa-refresh">reset</i></span>
+</div>
