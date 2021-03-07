@@ -58,10 +58,11 @@ function init_sidebar_geeklists(){
       }
       
       //Render main sidebar - empty
+      console.log( document.getElementById("sidenavGeeklists"));
       document.getElementById("sidenavGeeklists").innerHTML = sidenavTemplate({
           orderby: orderbyopts
       });
-      
+	
       //Close event
       document.querySelectorAll(".closeSideNavBtn").forEach(b=>b.addEventListener('click', function(e){
             //(e.target || e.srcElement).parentNode.parentNode.parentNode.style.display = "none";

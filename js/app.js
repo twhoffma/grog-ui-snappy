@@ -6,15 +6,31 @@
 		var sorting;
 		var filter;
 		var graphs;
-			
-		document.addEventListener("DomContentLoaded", function(){
+		
+		console.log("start"); 
+		
+		if(document.readyState !== 'loading'){
+			console.log(document.readyState);
+			init_app();
+		}else{	
+			console.log("Added event since " + document.readyState);
+			document.addEventListener("DOMContentLoaded", () => init_app());
+		}
+		
+		function init_app(){
+			console.log("1");
 			ui = init_ui();
 			data = init_data();
+			console.log("2");
 			sidenav_geeklists = init_sidebar_geeklists();
 			hdr = init_header();
+			console.log("3");
 			graphs = init_graphs();
+			console.log("4");
 				
 			ui.clearErrorMessage();
+			console.log("5");
+			
 			ui.renderFiltersDialog();
 							
 			var h = ui.getHistory();
@@ -55,7 +71,7 @@
 			//If id of a specific geeklist is in args, load that one.	
 			if(h.id !== undefined){
 				//$(".listHeaderButtons").show();
-				Array.from(document.getElementsByclassName("listHeaderButtons")).forEach(e => e.style.display = "block");
+				Array.from(document.getElementsByClassName("listHeaderButtons")).forEach(e => e.style.display = "block");
 				//$("#loadmore").show();
 				document.getElementById("loadmore").style.display = "block";
 
@@ -260,6 +276,6 @@
 					ui.setErrorMessage(e);
 				});
 			}
-		});
+		}
 	}
 )();

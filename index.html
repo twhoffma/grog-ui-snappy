@@ -38,7 +38,6 @@
 	<script src="js/templates.js" type="text/javascript"></script>
 	<script src="js/ui.js" type="text/javascript"></script>
 	<script src="js/data.js" type="text/javascript"></script>
-	<script src="js/app.js" type="text/javascript"></script>
 	<script src="js/ui.slider.js" type="text/javascript"></script>
 	<script src="js/sidenav_geeklists.js" type="text/javascript"></script>
 	<script src="js/header.js" type="text/javascript"></script>
@@ -48,6 +47,7 @@
 	<script src="https://code.highcharts.com/modules/export-data.js"></script>
 	
 	<script src="js/graphs.js" type="text/javascript"></script>
+	<script src="js/app.js" type="text/javascript"></script>
   </head>
   <body>
 	<div class="listHeader" id="glaze-hdr">
@@ -71,123 +71,8 @@
 	    </div>
 	</div>
 
-	<!-- <div id="sidenavGeeklists" style="display:none;"></div>-->
-	<div id="modSortingAndFilters" class="modal fade" role="dialog">
-		
-		 
-		<!--	
- 		<div class="modal-dialog">
-    		<div class="modal-content">
-      			<div class="modal-header">
-				<div>
-        				<button type="button" class="close pull-right pull-up" data-dismiss="modal">&times;</button>
-				</div>
-				
-				<button type="button" class="btn btn-default btn-block btn-primary" data-dismiss="modal" id="apply">Apply</button>
-      				</div>
-					<div class="modal-body">
-						<p id="guesstimated_obs" style="float: left;">&lt;&infin;</p>
-    						<h3>Sorting</h3>
-      						<div>
-							<form>
-            							<li>
-									<select id="sortby" class="form-control">
-										<option value="crets" selected>Addition time</option>
-										<option value="name">Name</option>
-										<option value="cnt">Count</option>
-										<option value="thumbs">Thumbs</option>
-										<option value="yearpublished">Year</option>
-									</select>
-								</li>	
-								<li>
-									<label class="radio-inline">
-										<input type="radio" name="sortby_asc" value="1">Ascending</input>
-									</label>
-									<label class="radio-inline">
-										<input type="radio" name="sortby_asc" value="0" checked="checked">Descending</input>
-									</label>
-								</li>
-							</form>
-      						</div>
-						
-    						<h3>Filters</h3>
-							<div>
-								<form>
-									<div class="form-group">
-											<label for="releasetype">
-											<select id="releasetype" class="form-control">
-												<option value="">All</option>
-												<option value="boardgame">Boardgames</option>
-												<option value="expansion">Expansions</option>
-												<option value="collection">Collections</option>
-												<option value="reimplementation">Reimplementations</option>
-												<option value="integration">Integrates with..</option>
-											</select>
-									</div>
-									<div class="form-group">
-										<label for="boardgamedesigner">Designer</label>
-										<select id="boardgamedesigner" class="form-control" data-live-search="true"></select>
-									</div>
-									<div class="form-group">
-										<label for="boardgamepublisher">Publisher</label>
-										<select id="boardgamepublisher" class="form-control" data-live-search="true"></select>
-									</div>
-									<div class="form-group">
-										<label for="boardgameartist">Artist</label>
-										<select id="boardgameartist" class="form-control" data-live-search="true"></select>
-									</div>
-									<div class="form-group">
-										<label for="boardgamemechanic">Mechanic</label>
-										<select id="boardgamemechanic" class="form-control" data-live-search="true"></select>
-									</div>
-									<div class="form-group">
-										<label for="boardgamecategory">Category</label>
-										<select id="boardgamecategory" class="form-control" data-live-search="true"></select>
-									</div>
-									<div class="form-group">
-										<label for="boardgamefamily">Family</label>
-										<select id="boardgamefamily" class="form-control" data-live-search="true"></select>
-									</div>
-									<div class="form-group">
-										<label for="playtime">Playing Time</label>
-										<svg id="playtimehist" style="width: 100%;height: 50px;"></svg>
-										<div id="playtime" class="filterslider"></div>
-										
-										<input class="min" type="number" for="number" step="1"></input>
-										<input class="max" type="number" for="number" step="1"></input>
-									</div>
-									<div class="form-group">
-										<label for="numplayers">Number of players</label>
-										<svg id="numplayershist" style="width: 100%;height: 50px;"></svg>
-										<div id="numplayers" class="filterslider"></div>
-										
-										<input class="min" type="number" for="number" step="1"></input>
-										<input class="max" type="number" for="number" step="1"></input>
-									</div>
-									<div class="form-group">
-										<label for="yearpublished">Year Published</label>
-										<svg id="yearpublishedhist" style="width: 100%; height: 50px;"></svg>
-										<div id="yearpublished" class="filterslider"></div>
-										<div>
-											<input class="min" type="number" for="number"></input>
-											<input class="max" type="number" for="number"></input>
-										</div>
-									</div>
-								</form>
-							</div>
-    						<h3>Info</h3>
-      						<p>All data is taken for free from BoardGameGeek's XMLAPI. As with that data, this data is strictly for non-commerical use and should not be altered.</p>
-							<p>I made it to get my ducks in a row before Essen 2015 and to learn new technologies. I won't guarantee anything about what you see here. It may be counting right, it may be wrong. In the case where lists-of-lists are available, some lists have been excluded to avoid "poisoning" the data.</p>
-							<p>Please do not try to exploit or crash my server. It's probably not that hard - but we're all friends here right?</p>
-							<p>If you want to play around with the code you can find it on <a href="https://github.com/twhoffma/geeklistanalyser" target="_blank">GitHub</a>.</p>
-				</div>
-      			<div class="modal-footer">
-        			<button type="button" class="btn btn-default btn-block btn-primary" data-dismiss="modal" id="apply">Apply</button>
-      			</div>
-			</div>
-		</div>
-		-->
-	</div>
+	<div id="sidenavGeeklists" style="display:none;"></div>
+	<div id="modSortingAndFilters" class="modal fade" role="dialog"></div>
 	<div class="alert alert-warning alert-dismissible" role="alert" id="bggAttribution">
   		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   		All this beautiful data is provided by BoardGameGeek and their BGG XML API. You may not use this data or system for commercial purposes or modify the data in any way. Please be nice and respect it ;)

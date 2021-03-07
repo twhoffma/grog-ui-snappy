@@ -52,10 +52,13 @@ function init_ui(){
 		
 		return addr
 	});
-
+	
+	console.log("handlebars");	
+	console.log(Handlebars.templates.sidenav_partial_rangeslider);
+	console.log("handlebars");	
 	Handlebars.registerPartial('render_attr', Handlebars.templates.bgattr);
 	Handlebars.registerPartial('render_rangeslider', Handlebars.templates.sidenav_partial_rangeslider);
-	Handlebars.registerPartial('render_filteredselect', Handlebars.templates.sidenav_partial_dropdown);
+	Handlebars.registerPartial('render_filteredselect', Handlebars.templates.sidenav_partial_filteredselect);
 	
 	function toggleDetails(e, op){
 	      var p = $(e.target).parent().parent().parent().parent(); //It's pretty far up there
@@ -332,7 +335,8 @@ function init_ui(){
 			return params
 		},
 		'renderFiltersDialog': function renderFilersDialog(){
-			let html = Handlebar.templates.sidenav_filters();
+			console.log(Handlebars.templates.sidenav_filters);
+			let html = Handlebars.templates.sidenav_filters();
 			let e = document.getElementById('modSortingAndFilters');
 			e.innerHTML = html;
 		},
@@ -359,7 +363,7 @@ function init_ui(){
 					}else if(e.type === 'slider'){
 						var s = document.getElementById(e.name);
 						var h = document.getElementById(e.name + 'hist');
-						
+						console.log(e.name);	
 						if(s.noUiSlider){
 							s.noUiSlider.destroy();
 						}

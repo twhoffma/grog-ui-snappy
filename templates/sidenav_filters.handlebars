@@ -46,13 +46,13 @@
 							<option value="integration">Integrates with..</option>
 						</select>
 					</div>
-			
-					{{> render_filteredselect attrs="boardgamedesigner" attrnm="Designer"}}
-					{{> render_filteredselect attrs="boardgameartist" attrnm="Artist"}}
-					{{> render_filteredselect attrs="boardgamepublisher" attrnm="Publisher"}}
-					{{> render_filteredselect attrs="boardgamemechanic" attrnm="Mechanic"}}
-					{{> render_filteredselect attrs="boardgamecategory" attrnm="Category"}}
-					{{> render_filteredselect attrs="boardgamefamily" attrnm="Family"}}
+					
+					{{> render_filteredselect attr="boardgamedesigner" attrnm="Designer"}}
+					{{> render_filteredselect attr="boardgameartist" attrnm="Artist"}}
+					{{> render_filteredselect attr="boardgamepublisher" attrnm="Publisher"}}
+					{{> render_filteredselect attr="boardgamemechanic" attrnm="Mechanic"}}
+					{{> render_filteredselect attr="boardgamecategory" attrnm="Category"}}
+					{{> render_filteredselect attr="boardgamefamily" attrnm="Family"}}
 	
 					{{> render_rangeslider attr="playtime" attrnm="Playing Time" step="1"}}
 					{{> render_rangeslider attr="numplayers" attrnm="Number of players" step="1"}}
