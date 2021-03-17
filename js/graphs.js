@@ -1,28 +1,66 @@
-function init_graphs(){
+import { Chart } from "https://unpkg.com/frappe-charts@1.1.0/dist/frappe-charts.esm.js";
+
+
+export function init_graphs(){
 	var graphDataCache = [];
 	
-	/*	
-	function requestJSON(url){
-		return new Promise(function(resolve, reject){
-			jQuery.ajax({
-				url: url 
-			}).then(
-				function(data){
-					//console.log(data);
-					var r = jQuery.parseJSON(data);
-			
-					resolve(r);
-				},
-				function(jqXHR, textStatus, errorThrown){
-					reject(errorThrown);
-				}
-			);
-		})
+	function renderFrappeChart(){
+		new Chart("#frappechart", {
+		  // or DOM element
+		  data: {
+		    labels: [
+		      "12am-3am",
+		      "3am-6am",
+		      "6am-9am",
+		      "9am-12pm",
+		      "12pm-3pm",
+		      "3pm-6pm",
+		      "6pm-9pm",
+		      "9pm-12am"
+		    ],
+
+		    datasets: [
+		      {
+			name: "Some Data",
+			chartType: "bar",
+			values: [25, 40, 30, 35, 8, 52, 17, 4]
+		      }
+		      ,
+		      {
+			name: "Another Set",
+			chartType: "bar",
+			values: [25, 50, -10, 15, 18, 32, 27, 14]
+		      }
+		    ],
+
+		    yMarkers: [{ label: "Marker", value: 70, options: { labelPos: "left" } }],
+		    yRegions: [
+		      { label: "Region", start: -10, end: 50, options: { labelPos: "right" } }
+		    ]
+		  },
+
+		  title: "My Awesome Chart",
+		  type: "bar", // or 'bar', 'line', 'pie', 'percentage'
+		  height: 300,
+		  colors: ["purple", "#ffa3ef", "light-blue"],
+		  maxSlices: 3,
+		  axisOptions: {
+		    xAxisMode: "tick",
+		    xIsSeries: true
+		  },
+		  barOptions: {
+		    stacked: true,
+		    spaceRatio: 0.5
+		  },
+		  tooltipOptions: {
+		    formatTooltipX: (d) => (d + "").toUpperCase(),
+		    formatTooltipY: (d) => d + " pts"
+		  }
+		});
 	}
-	*/
-	
+			
 	function renderGraph(divId, nm, data, valattr){
-		d = data.map(e => ({"name": e.name, "y": e[valattr] }));
+		let d = data.map(e => ({"name": e.name, "y": e[valattr] }));
 		Highcharts.chart(divId, {
 		    chart: {
 			plotBackgroundColor: null,
@@ -187,6 +225,8 @@ function init_graphs(){
 				
 		"renderGroupGraph": function(divId, nm, data, N, geeklistId, attr, valattr){
 			renderGroupGraph(divId, nm, data, N, geeklistId, attr, valattr);
-		}
+		},
+
+		"renderFrappeChart": function(){renderFrappeChart();}
 	}
 }

@@ -1,3 +1,6 @@
+import * as Graphs from './graphs.js'
+import * as ListOfGeeklists from './sidenav_geeklists.js'
+
 (
 	function(){
 		var ui;
@@ -6,7 +9,9 @@
 		var sorting;
 		var filter;
 		var graphs;
-		
+		var sidenav_geeklists;
+		var hdr; 
+					
 		console.log("start"); 
 		
 		if(document.readyState !== 'loading'){
@@ -22,10 +27,10 @@
 			ui = init_ui();
 			data = init_data();
 			console.log("2");
-			sidenav_geeklists = init_sidebar_geeklists();
+			sidenav_geeklists = ListOfGeeklists.init_sidebar_geeklists();
 			hdr = init_header();
 			console.log("3");
-			graphs = init_graphs();
+			graphs = Graphs.init_graphs();
 			console.log("4");
 				
 			ui.clearErrorMessage();
@@ -219,6 +224,7 @@
 								var valattr = (radios.length > 0 ? radios[0].value : "value");
 								
 								graphs.renderGraphs(r, geeklistId, valattr);
+								graphs.renderFrappeChart();
 
 							}).finally(e => resolve());
 						});

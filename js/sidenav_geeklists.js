@@ -1,4 +1,4 @@
-function init_sidebar_geeklists(){
+export function init_sidebar_geeklists(){
    	//var source   = document.getElementById("gl-sidebar-template").innerHTML;
 	var sidenavTemplate = Handlebars.templates.sidenav_lists;
     

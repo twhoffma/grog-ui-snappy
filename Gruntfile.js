@@ -35,6 +35,7 @@ module.exports = function(grunt) {
 											'node_modules/bootstrap-slider/dist/css/*',
 											'node_modules/bootstrap-select/dist/css/bootstrap-select.min.css',
 											'node_modules/nouislider/distribute/nouislider.min.css',
+											'node_modules/frappe-charts/dist/frappe-charts.min.css',
 										], 
 										dest: '<%= dirs.outdir %>/css/', 
 										filter: 'isFile'
@@ -59,6 +60,7 @@ module.exports = function(grunt) {
 															'node_modules/bootstrap-select/dist/js/bootstrap-select.min.js',
 															'node_modules/html5-history-api/history.min.js',
 															'node_modules/nouislider/distribute/nouislider.min.js',
+															'node_modules/frappe-charts/dist/frappe-charts.min.esm.js',
 															'./js/data.js',
 															'./js/ui.js',
 															'./js/ui.slider.js',
