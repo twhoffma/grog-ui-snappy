@@ -8,7 +8,7 @@ import * as ListOfGeeklists from './sidenav_geeklists.js'
 		var selectedGeeklist = 0;
 		var sorting;
 		var filter;
-		var graphs;
+		//var graphs;
 		var sidenav_geeklists;
 		var hdr; 
 					
@@ -26,11 +26,11 @@ import * as ListOfGeeklists from './sidenav_geeklists.js'
 			console.log("1");
 			ui = init_ui();
 			data = init_data();
-			console.log("2");
-			sidenav_geeklists = ListOfGeeklists.init_sidebar_geeklists();
+			//console.log("2");
+			//sidenav_geeklists = ListOfGeeklists.init_sidebar_geeklists();
 			hdr = init_header();
-			console.log("3");
-			graphs = Graphs.init_graphs();
+			//console.log("3");
+			//graphs = Graphs.init_graphs();
 			console.log("4");
 				
 			ui.clearErrorMessage();
@@ -41,7 +41,7 @@ import * as ListOfGeeklists from './sidenav_geeklists.js'
 			var h = ui.getHistory();
 			
 			data.getGeeklists().then(function(r){
-				sidenav_geeklists.setGeeklistsSidebar(r);
+				ListOfGeeklists.setSidebarGeeklists(r);
 				
 				let filters = {};
 				
@@ -146,7 +146,7 @@ import * as ListOfGeeklists from './sidenav_geeklists.js'
 					var radios = document.querySelectorAll('input[name="graph_valattr"]:checked');
 					var valattr = (radios.length > 0 ? radios[0].value : "value");
 					
-					graphs.renderGraphs(r, selectedGeeklist, valattr);
+					Graphs.renderGraphs(r, selectedGeeklist, valattr);
 
 				});
 			});
@@ -218,13 +218,13 @@ import * as ListOfGeeklists from './sidenav_geeklists.js'
 							console.log("All loaded");	
 							resolve();
 						}).then(function(r){
-							graphs.getGraphData(geeklistId).then(function(r){
+							Graphs.getGraphData(geeklistId).then(function(r){
 								
 								var radios = document.querySelectorAll('input[name="graph_valattr"]:checked');
 								var valattr = (radios.length > 0 ? radios[0].value : "value");
 								
-								graphs.renderGraphs(r, geeklistId, valattr);
-								graphs.renderFrappeChart();
+								Graphs.renderGraphs(r, geeklistId, valattr);
+								Graphs.renderFrappeChart();
 
 							}).finally(e => resolve());
 						});
