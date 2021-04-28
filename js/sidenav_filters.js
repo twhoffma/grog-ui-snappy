@@ -101,6 +101,8 @@ function init_sidebar_filters(){
 		if(e.method === 'range'){
 			noUiSlider.create(s, {range: v, start: [v.min, v.max], step: 1});
 				
+			//FIXME: Check that [] or ['2021'] is handled gracefully. min and max cannot be the same.
+			
 			defaults = {'min': v.min, 'max': v.max};
 		}else if(e.method === 'pips'){
 			//TODO: Make it snap to only given values. Need to generate {min: , max:, '10%':, ...}
@@ -111,6 +113,8 @@ function init_sidebar_filters(){
 			
 			rng['min'] = Math.min.apply(null, v);
 			rng['max'] = Math.max.apply(null, v);
+			
+			//FIXME: Check that [] or ['2021'] is handled gracefully. min and max cannot be the same
 			
 			for(var i = 0; i < v.length; i++){
 				if(v[i] > rng['min'] && v[i] < rng['max']){ 
