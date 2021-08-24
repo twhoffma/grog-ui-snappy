@@ -202,7 +202,8 @@ export	function renderGraphs(r, geeklistId, valattr){
 }
 
 export function  getGraphData(geeklistId){
-	var url = "./data/getGeeklistGraphData?geeklistid=" + parseInt(geeklistId);
+	//var url = "./data/getGeeklistGraphData?geeklistid=" + parseInt(geeklistId);
+	var url = "./staticdata/graphs-" + geeklistId + ".json";
 	var data = graphDataCache.find(e => e.geeklistId === geeklistId);
 	
 	if(data === undefined){

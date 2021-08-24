@@ -1,22 +1,5 @@
 function init_data(){
 	function requestJSON(url){
-		/*
-		return new Promise(function(resolve, reject){
-			jQuery.ajax({
-				url: url 
-			}).then(
-				function(data){
-				
-					var r = jQuery.parseJSON(data);
-			
-					resolve(r);
-				},
-				function(jqXHR, textStatus, errorThrown){
-					reject(errorThrown);
-				}
-			);
-		})
-		*/
 		return fetch(url).then(r => r.json())
 	}
 	
@@ -27,8 +10,12 @@ function init_data(){
 			return requestJSON(url)	
 		},
 		
+		'getGeeklistGraphs': function getGeeklistFilters(geeklistid){
+			var url = "./staticdata/graphs-" + parseInt(geeklistid) + '.json';
+			
+			return requestJSON(url) 
+		},
 		'getGeeklistFilters': function getGeeklistFilters(geeklistid){
-			//var url = "./data/getGeeklistFilters?geeklistid=" + parseInt(geeklistid);
 			var url = "./staticdata/filters-" + parseInt(geeklistid) + '.json';
 			
 			return requestJSON(url) 
